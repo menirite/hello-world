@@ -42,3 +42,24 @@ def palindrome(x):
     tmp = tmp //10
   return True
 ```
+
+
+300.LIS最长子序列
+-----
+一直报错，因为没有考虑列表无数字的情况，即空列表无max值。
+```Python
+class Solution(object):
+    def lengthOfLIS(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        if len(nums)<1:
+            return 0
+        LIS = [1]*len(nums)
+        for i in range(len(nums)):
+            for p in range(i):
+                if nums[p]<nums[i]:
+                    LIS[i] = max(LIS[i],LIS[p]+1)
+        return max(LIS)
+```
